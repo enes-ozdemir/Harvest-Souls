@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc33660ef7b34997b40111e6d2526845, type: 3}
+  m_Name: GameData
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: d64ebd9b5572d514e9fd65e94aaa3bc1, type: 2}
+  soulCount: 0
