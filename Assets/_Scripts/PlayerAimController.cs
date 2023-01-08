@@ -20,6 +20,7 @@ namespace _Scripts
             public Vector3 gunEndPointPosition;
             public Vector3 shootPosition;
         }
+
         private CharacterAnimationController _animationController;
 
         private void Awake()
@@ -27,7 +28,7 @@ namespace _Scripts
             BattleManager.onBattleStarted += SetBattleStarted;
             BattleManager.onBattleEnded += SetBattleEnded;
             _animationController = GetComponent<CharacterAnimationController>();
-
+            
             _camera = Camera.main;
         }
 
@@ -36,8 +37,8 @@ namespace _Scripts
 
         private void Update()
         {
-            if(!_isInBattle) return;
-            
+            if (!_isInBattle) return;
+
             HandleWeaponDirection();
             HandleProjectile();
         }
@@ -47,9 +48,10 @@ namespace _Scripts
             var mousePosition = GetMouseWorldPosition();
             var aimDirection = (mousePosition - transform.position).normalized;
             var angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-            aimHelper.eulerAngles = new Vector3(0, 0, angle+180);
+
+            aimHelper.eulerAngles = new Vector3(0, 0, angle + 180);
         }
-    
+
 
         private Vector3 GetMouseWorldPosition()
         {

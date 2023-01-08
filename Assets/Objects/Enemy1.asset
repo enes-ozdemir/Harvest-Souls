@@ -17,47 +17,6 @@ MonoBehaviour:
   attackSpeed: 1
   damage: 1
   soulAmount: 5
-  moveSprites:
-  - {fileID: 21300000, guid: 8548759521bec144495834041fc0ed74, type: 3}
-  - {fileID: 21300000, guid: 5fc0a214422627843b4c001c8e45b005, type: 3}
-  - {fileID: 21300000, guid: 299533f54da52104fabd44ddc437ca35, type: 3}
-  - {fileID: 21300000, guid: 6ba7d8532e43aa6489aacba680786d56, type: 3}
-  - {fileID: 21300000, guid: 68038d447b2b0854fa6534a247a83454, type: 3}
-  - {fileID: 21300000, guid: 5f122fa19cbc423468458532b0df00df, type: 3}
-  - {fileID: 21300000, guid: 109fbd4047318364bb0f0c1550624651, type: 3}
-  - {fileID: 21300000, guid: 71f6487e246f60640aaaa9a5ee4bb3c8, type: 3}
-  - {fileID: 21300000, guid: 94ec1b97b47508a4c999257d1eca0c54, type: 3}
-  - {fileID: 21300000, guid: 0cf732d267c7a3e44a11f3dde707ca68, type: 3}
-  - {fileID: 21300000, guid: 39f06f8df5b8b3f4b8292531d1f33e4c, type: 3}
-  - {fileID: 21300000, guid: f179d4570103a3e42a396af0902d09fa, type: 3}
-  attackSprites:
-  - {fileID: 21300000, guid: 46c5eff03aeb6ea4b9a16e6207c48b31, type: 3}
-  - {fileID: 21300000, guid: 89aeb2db6569e144fbd29b4e130ac92a, type: 3}
-  - {fileID: 21300000, guid: 918042466c1ee8b48b48d685195a9ae4, type: 3}
-  - {fileID: 21300000, guid: ae86fd8bb17ce5441adb59acbdd99339, type: 3}
-  - {fileID: 21300000, guid: 899fab850296bff48aea4bd8dc7bdbcc, type: 3}
-  - {fileID: 21300000, guid: 773267c7cfa07e049bb967efd4f4be47, type: 3}
-  - {fileID: 21300000, guid: 4a453e8f8a73f9b4d920c561cdcdcca6, type: 3}
-  - {fileID: 21300000, guid: 5db4e3dd842b6314d9300b08bf10f34c, type: 3}
-  - {fileID: 21300000, guid: 00017034da67bd145b2ad4ed05569f1b, type: 3}
-  - {fileID: 21300000, guid: b430341a42a63bf488fd54488eab212f, type: 3}
-  - {fileID: 21300000, guid: f9f7f74f1df280e4db6c405542a6981d, type: 3}
-  - {fileID: 21300000, guid: 54bb2b39bb3425d4abfc621abf9f7077, type: 3}
-  deadSprites:
-  - {fileID: 21300000, guid: 13ec91bc1bf33954e9e93cefe1f56c65, type: 3}
-  - {fileID: 21300000, guid: 03080c2eac909424aa0222487bb13fd2, type: 3}
-  - {fileID: 21300000, guid: 4c146d86782141f43b206a724a68373d, type: 3}
-  - {fileID: 21300000, guid: d1119cd9cdb95904d8d6a25d0d860453, type: 3}
-  - {fileID: 21300000, guid: 41d07879f5cde0049b6a0e9f6532807e, type: 3}
-  - {fileID: 21300000, guid: 28b7b80d341ac944fa69b3648cce0793, type: 3}
-  - {fileID: 21300000, guid: 05ff23417d3f6054cabb1d0da0650a0d, type: 3}
-  - {fileID: 21300000, guid: 2c7dac12c7e380f44889eb6abaa6f374, type: 3}
-  - {fileID: 21300000, guid: b6a24e895d717054fb7e83381ba7decd, type: 3}
-  - {fileID: 21300000, guid: 78052d65e12439d41b32685d4a20d35b, type: 3}
-  - {fileID: 21300000, guid: 52b520735ab19ea48a97b92d747efea3, type: 3}
-  - {fileID: 21300000, guid: 5a2058d89fe6ac949b6c2b4eaaa24ee6, type: 3}
-  - {fileID: 21300000, guid: b21806a4af91c734699163fd0294aa23, type: 3}
-  - {fileID: 21300000, guid: 2c5969ab011894a4cbdfee26fc08e8e8, type: 3}
-  - {fileID: 21300000, guid: d08cfbe8f7d27c04ab2a43a11bd9f26f, type: 3}
   isRanged: 1
   range: 5
+  deathPrefab: {fileID: 1889919486439536, guid: 0f50b731bbe58564c9b72dda9153da81, type: 3}

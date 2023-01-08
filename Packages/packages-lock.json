@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.enesozdemir.enca-plugin": {
-      "version": "https://github.com/enes-ozdemir/Enca-Unity-Plugins.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "47a6c783b9f4501dee7134775b335d457e1794fa"
-    },
     "com.unity.2d.animation": {
       "version": "8.0.4",
       "depth": 1,

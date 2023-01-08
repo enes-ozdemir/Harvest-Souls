@@ -16,3 +16,5 @@ MonoBehaviour:
   health: 3
   speed: 5
   invensibleTime: 2
+  collectRadious: 10
+  attackSpeed: 5

@@ -8,10 +8,11 @@ namespace _Scripts
     {
         private Vector3 _shootDir;
         public float moveSpeed;
+        public int projectileDamage;
 
-
-        public void Setup(Vector3 shootDirection)
+        public void Setup(Vector3 shootDirection,int damage)
         {
+            projectileDamage = damage;
             _shootDir = shootDirection;
             transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(_shootDir));
             DestroyProjectile(5f);

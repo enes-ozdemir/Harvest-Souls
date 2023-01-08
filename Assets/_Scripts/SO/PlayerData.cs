@@ -9,5 +9,7 @@ namespace _Scripts.SO
         public int health;
         public float speed;
         public int invensibleTime;
+        public float collectRadious;
+        public float attackSpeed;
     }
 }

@@ -7,6 +7,7 @@ namespace _Scripts
     {
         public float speed = 10.0f;
         private CharacterAnimationController _animationController;
+        public static bool facingRight = true;
 
         private void Start()
         {
@@ -24,6 +25,7 @@ namespace _Scripts
             float verticalInput = Input.GetAxis("Vertical");
             var movement = new Vector3(horizontalInput, verticalInput, 0) * speed * Time.deltaTime;
             transform.position += movement;
+            FlipPlayer(horizontalInput);
 
             if (horizontalInput != 0 || verticalInput != 0)
             {
@@ -33,6 +35,32 @@ namespace _Scripts
             {
                 _animationController.PlayAnimation(AnimationType.Idle);
             }
+        }
+
+        private void FlipPlayer(float inputX)
+        {
+            if (inputX > 0 && facingRight)
+            {
+                Flip();
+                facingRight = false;
+            }
+            else if (inputX < 0 && !facingRight)
+            {
+                Flip();
+                facingRight = true;
+            }
+        }
+
+        private void Flip()
+        {
+            var scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
+
+            var aimHelper = transform.GetChild(0);
+            var aimHelperScale = aimHelper.localScale;
+            aimHelperScale.x *= -1;
+            aimHelper.localScale = scale;
         }
     }
 

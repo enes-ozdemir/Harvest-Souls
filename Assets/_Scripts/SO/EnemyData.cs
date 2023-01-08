@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Scripts
+namespace _Scripts.SO
 {
     [CreateAssetMenu]
     public class EnemyData : ScriptableObject
@@ -12,6 +12,8 @@ namespace _Scripts
         public int soulAmount;
         public bool isRanged;
         public float range;
+        public GameObject deathPrefab;
+        public GameObject projectilePrefab;
 
     }
 }
