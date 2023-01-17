@@ -27,15 +27,15 @@ namespace _Scripts
             var movement = new Vector3(horizontalInput, verticalInput, 0) * speed * Time.deltaTime;
             transform.position += movement;
             FlipPlayer(horizontalInput);
+            PlayAnimation(horizontalInput, verticalInput);
+        }
 
+        private void PlayAnimation(float horizontalInput, float verticalInput)
+        {
             if (horizontalInput != 0 || verticalInput != 0)
-            {
                 _animationController.PlayAnimation(AnimationType.Move);
-            }
             else
-            {
                 _animationController.PlayAnimation(AnimationType.Idle);
-            }
         }
 
         private void FlipPlayer(float inputX)

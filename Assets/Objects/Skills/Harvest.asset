@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b106bbe20d4bba8ac0c32fe0f59663, type: 3}
+  m_Name: Harvest
+  m_EditorClassIdentifier: 
+  name: Harvest
+  skillImage: {fileID: 0}
+  effectArea: 20
+  skillSpeed: 1
+  skillDamage: 0
+  skillCount: 0
+  skillRange: 20
+  skillPrefab: {fileID: 0}
+  explosivePrefab: {fileID: 0}
+  skillSprite: {fileID: 0}
+  isOnMouse: 0
+  cooldownTime: 5
+  activeTime: 0

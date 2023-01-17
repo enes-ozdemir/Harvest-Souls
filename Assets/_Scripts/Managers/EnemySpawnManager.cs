@@ -62,9 +62,7 @@ namespace _Scripts.Managers
 
             if (_passedTime >= spawnTimer)
             {
-                print("Enemy spawned with passedtime: " + _passedTime + "Spawntimer: " + spawnTimer);
                 _passedTime = 0.0f;
-                print("   passedtime: " + _passedTime);
 
                 var enemyPrefab = SelectRandomEnemy();
                 var spawnPosition = MapManager.Instance.GetRandomPositionOnMap();

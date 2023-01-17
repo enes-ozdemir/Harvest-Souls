@@ -14,13 +14,14 @@ namespace _Scripts.Managers
         private int currentLevel;
         private int currentWave;
 
-        [FormerlySerializedAs("allWaves")] [SerializeField] private BattleLevel[] battleLevels;
+        [SerializeField] private BattleLevel[] battleLevels;
 
         [SerializeField] private EnemySpawnManager enemySpawnManager;
         [SerializeField] private GameObject backgroundSprite;
 
         [SerializeField] private GameObject goBackObject;
         [SerializeField] private GameObject continueObject;
+        
 
 
         public void Start()
@@ -49,13 +50,7 @@ namespace _Scripts.Managers
             continueObject.SetActive(true);
         }
 
-        public void AddSoul(int amount)
-        {
-            print("Soul added " + amount);
-            PlayerStats.soulAmount += amount;
-
-            //  PlayerPrefs.SetInt("soulAmount",amount);
-        }
+    
 
         private void OnDisable()
         {

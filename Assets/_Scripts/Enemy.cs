@@ -135,7 +135,6 @@ namespace _Scripts
         {
             currentHealth -= damageAmount;
             DoDamagedEffect();
-            print("Enemy got damaged remaining health:" + currentHealth);
 
             if (currentHealth < 0)
             {
@@ -151,7 +150,7 @@ namespace _Scripts
             characterAnimationController.PlayAnimation(AnimationType.Death);
         }
 
-        private void RemoveCorpse()
+        private void RemoveCorpse(int amount)
         {
             if (!_isDead) return;
             _spriteRenderer.DOFade(0, 0.5f);

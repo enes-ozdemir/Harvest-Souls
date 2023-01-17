@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Scripts.Data;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -21,8 +22,8 @@ namespace _Scripts.Managers
         [SerializeField] private GameObject soulPrefab;
         public List<ICollectable> _collectableList = new();
         [SerializeField] private BattleManager _battleManager;
- 
-        public Action OnSoulCollected;
+
+        public Action<int> OnSoulCollected;
 
         public void DropSoul(int amount, Vector2 position)
         {
@@ -30,6 +31,14 @@ namespace _Scripts.Managers
             var collectable = soulObject.GetComponent<Soul>();
             collectable.Setup(amount);
             _collectableList.Add(collectable);
+        }
+        
+        public void AddSoul()
+        {
+            print("Soul added " + 1);
+            PlayerStats.soulAmount += 1;
+
+            //  PlayerPrefs.SetInt("soulAmount",amount);
         }
     }
 }

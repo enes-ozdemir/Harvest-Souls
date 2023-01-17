@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using _Scripts.Managers;
 using _Scripts.SO;
 using Cysharp.Threading.Tasks;
@@ -13,8 +12,6 @@ namespace _Scripts.Player
         [SerializeField] private HealthManager healthManager;
         [SerializeField] public BattleManager battleManager;
         [SerializeField] private PlayerInfoData _playerInfoData;
-        [SerializeField] private GameObject skillField;
-        
 
         #region Singleton
 
@@ -34,84 +31,6 @@ namespace _Scripts.Player
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             onDamaged += Damaged;
-        }
-
-        private void Update()
-        {
-            CheckForHarvest();
-            CheckForTeleport();
-        }
-
-        private async UniTask CheckForTeleport()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                print("Teleport start");
-                var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if (Vector2.Distance(mousePos, transform.position) >= 20f)
-                {
-                    ShowField();
-                    return;
-                }
-                
-                var teleportPrefab=Instantiate(_playerInfoData.teleportPrefab, transform.position, Quaternion.identity);
-                var secondTeleportPrefab=Instantiate(_playerInfoData.teleportPrefab, mousePos, Quaternion.identity);
-                await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
-                transform.position = mousePos;
-                Destroy(teleportPrefab,0.6f);
-                Destroy(secondTeleportPrefab,0.6f);
-            }
-        }
-
-        private async UniTaskVoid ShowField()
-        {
-            skillField.SetActive(true);
-            await UniTask.Delay(TimeSpan.FromSeconds(0.8f));
-            skillField.SetActive(false);
-        }
-
-        private void CheckForHarvest()
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                print("Harvest started");
-                var collectables = GetNearbySouls();
-                HarvestSouls(collectables);
-
-                foreach (var soul in collectables)
-                {
-                    SoulManager.Instance._collectableList.Remove(soul);
-                }
-            }
-        }
-
-        private void HarvestSouls(List<ICollectable> collectables)
-        {
-            foreach (var collectable in collectables)
-            {
-                var amount = collectable.Collect(transform);
-                battleManager.AddSoul(amount);
-                SoulManager.Instance.OnSoulCollected.Invoke();
-            }
-        }
-
-        private List<ICollectable> GetNearbySouls()
-        {
-            var collectables = new List<ICollectable>();
-
-            var colliders = Physics2D.OverlapCircleAll(transform.position, PlayerData.collectRadious);
-
-            foreach (var col in colliders)
-            {
-                var collectable = col.gameObject;
-
-                if (!collectable.CompareTag("Soul")) continue;
-
-                collectables.Add(collectable.GetComponent<ICollectable>());
-            }
-
-            print("Found" + collectables.Count + " soul");
-            return collectables;
         }
 
         private void OnDrawGizmos()
