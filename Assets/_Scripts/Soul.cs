@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
 namespace _Scripts
@@ -15,8 +14,8 @@ namespace _Scripts
 
         public int Collect(Transform transform)
         {
-            gameObject.transform.DOMove(transform.position, 0.1f);
-            Destroy(gameObject, 0.3f);
+            gameObject.transform.DOMove(transform.position, 0.5f);
+            Destroy(gameObject, 0.5f);
             return _amount;
         }
     }

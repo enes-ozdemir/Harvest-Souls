@@ -1,4 +1,6 @@
 ﻿using System;
+using _Scripts.Managers;
+using _Scripts.Player;
 using _Scripts.SO;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -23,6 +25,8 @@ namespace _Scripts
         private bool _isDead;
 
         public int priority = 1;
+
+        public Action<Enemy> onDead;
 
         private void Start()
         {
@@ -55,7 +59,6 @@ namespace _Scripts
                 if (_passedTime >= enemyData.attackSpeed)
                 {
                     _passedTime = 0;
-                    print("Enemy attacking");
                     Attack();
                 }
                 else
@@ -76,13 +79,6 @@ namespace _Scripts
                 _passedTime += Time.deltaTime;
             }
         }
-        // private void SpawnParticle(PlayerAimController.OnShootEventArgs args)
-        // {
-        //     print("Spawned");
-        //     var _projectileTransform = Instantiate(projectile, args.gunEndPointPosition, Quaternion.identity);
-        //     var shootDir = (args.shootPosition - args.gunEndPointPosition).normalized;
-        //     _projectileTransform.GetComponent<Projectile>().Setup(shootDir, playerController.GetDamage());
-        // }
 
         private void Attack()
         {
@@ -90,6 +86,7 @@ namespace _Scripts
             characterAnimationController.PlayAnimation(AnimationType.Attack);
             if (enemyData.isRanged)
             {
+                SpawnParticle();
             }
             else
             {
@@ -97,6 +94,29 @@ namespace _Scripts
             }
         }
 
+        private void SpawnParticle()
+        {
+            var projectileTransform = Instantiate(enemyData.projectilePrefab, transform.position, Quaternion.identity);
+            print("Spawned");
+            var shootDir = CalculateDir();
+            projectileTransform.GetComponent<Projectile>().Setup(shootDir, enemyData.damage);
+        }
+
+        private Vector3 CalculateDir()
+        {
+            var random = Random.Range(0, 10);
+            Vector3 dir;
+            if (random < 5)
+                dir = (PlayerController.Instance.transform.position - transform.position).normalized;
+            else if (random > 8)
+                dir = (PlayerController.Instance.transform.position + new Vector3(10, 10) - transform.position)
+                    .normalized;
+            else
+                dir = (PlayerController.Instance.transform.position + new Vector3(-10, -10) - transform.position)
+                    .normalized;
+
+            return dir;
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -107,7 +127,7 @@ namespace _Scripts
                 if (projectile == null) return;
                 var damage = projectile.projectileDamage;
                 GotDamaged(damage);
-                Destroy(projectile.gameObject);
+                projectile.DestroyIt();
             }
         }
 
@@ -126,31 +146,32 @@ namespace _Scripts
 
         private void Die()
         {
+            _isDead = true;
             soulManager.DropSoul(enemyData.soulAmount, transform.position);
             characterAnimationController.PlayAnimation(AnimationType.Death);
-            _isDead = true;
         }
 
         private void RemoveCorpse()
         {
             if (!_isDead) return;
             _spriteRenderer.DOFade(0, 0.5f);
-            Instantiate(enemyData.deathPrefab, transform);
+            var deathPrefab = Instantiate(enemyData.deathPrefab, transform);
+            Destroy(gameObject);
+            Destroy(deathPrefab, 1f);
         }
-
 
         private async UniTaskVoid DoDamagedEffect()
         {
-            var duration = 0.1f;
-            //add hit particle
-            //add dead effect
-
-            _spriteRenderer.DOColor(Color.red, 1).SetEase(Ease.Linear);
-            _spriteRenderer.DOFade(0.5f, 1f).SetEase(Ease.Linear);
+            //characterAnimationController.PlayAnimation(AnimationType.Hurt);
+            var duration = 0.5f;
+            _spriteRenderer.DOFade(0.7f, duration).SetEase(Ease.Linear).SetId("FadeTween");
+            var normalColor = _spriteRenderer.color;
+            _spriteRenderer.DOColor(Color.red, duration);
             await UniTask.Delay(TimeSpan.FromSeconds(duration));
-            _spriteRenderer.DORewind();
-            await UniTask.Delay(TimeSpan.FromSeconds(duration));
+            _spriteRenderer.DOColor(normalColor, duration);
+            _spriteRenderer.DOFade(1, duration).SetEase(Ease.Linear).SetId("FadeTween");
         }
+
 
         private void OnDestroy()
         {

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c48dfc1bce4899ab81289a4bf441ca, type: 3}
+  m_Name: Level1
+  m_EditorClassIdentifier: 
+  waveList:
+  - enemyInfoList:
+    - weight: 4
+      enemy: {fileID: 4692856867734973692, guid: 32beda01ba04e5244bba8f3e3c249dfc, type: 3}
+    - weight: 6
+      enemy: {fileID: 4692856867734973692, guid: 6a9ae4850a25dc94e8d4afc2128cf1f1, type: 3}
+    enemyCount: 20
+    timeBetweenSpawns: 1
+  difficulty: 1
+  timeBetweenWaves: 1
+  backgroundSprite: {fileID: 21300000, guid: 491cd49dc491287438ebdcec2aa2779b, type: 3}

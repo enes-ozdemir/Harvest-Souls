@@ -14,6 +14,14 @@ namespace _Scripts.SO
         public float range;
         public GameObject deathPrefab;
         public GameObject projectilePrefab;
+    }
 
+    public enum AttackType
+    {
+        Melee,
+        NormalRange,
+        TripleRange,
+        SkillFromUp,
+        LineSkill,
     }
 }

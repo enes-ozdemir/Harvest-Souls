@@ -9,8 +9,10 @@ namespace _Scripts
         private Vector3 _shootDir;
         public float moveSpeed;
         public int projectileDamage;
+        public GameObject explosivePrefab;
+        private bool isDestroyed;
 
-        public void Setup(Vector3 shootDirection,int damage)
+        public void Setup(Vector3 shootDirection, int damage)
         {
             projectileDamage = damage;
             _shootDir = shootDirection;
@@ -20,9 +22,24 @@ namespace _Scripts
 
         private async void DestroyProjectile(float seconds)
         {
+            if (isDestroyed) return;
             await UniTask.Delay(TimeSpan.FromSeconds(seconds));
             if (gameObject == null) return;
+            EndEffect();
+        }
+
+        private void EndEffect()
+        {
+            if (isDestroyed) return;
+            Instantiate(explosivePrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            explosivePrefab.gameObject.SetActive(false);
+            isDestroyed = true;
+        }
+
+        public void DestroyIt()
+        {
+            EndEffect();
         }
 
         private void Update()
