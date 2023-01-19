@@ -10,7 +10,6 @@ namespace _Scripts
     [Serializable]
     public class Ability
     {
-        public KeyCode keyCode;
         public SkillData skillData;
         public float cooldownTime;
         public float activeTime;
@@ -29,15 +28,19 @@ namespace _Scripts
     {
         private Vector3 _shootDir;
         [SerializeField] private GameObject skillField;
-        [SerializeField] private SkillUIManager skillUIManager;
-        [SerializeField] private List<Ability> activeAbilities;
+        [SerializeField] private List<Ability> mainAbilities;
+        [SerializeField] private Ability qAbility;
+        [SerializeField] private Ability rAbility;
 
         private Camera _camera;
 
+        public Action<Ability> onAbilityUsed;
+        public Action<Ability> onAbilityCollected;
+
+
         private void Awake()
         {
-            skillUIManager.OnAbilityUsed += SetActiveAbilities;
-            _camera=Camera.main;
+            _camera = Camera.main;
             // foreach (var ability in abilitiesList)
             // {
             //     activeAbilities.Add(ability);
@@ -46,7 +49,7 @@ namespace _Scripts
 
         private void SetActiveAbilities(Ability ability)
         {
-           // activeAbilities.Remove(ability);
+            // activeAbilities.Remove(ability);
         }
 
 
@@ -59,36 +62,59 @@ namespace _Scripts
 
         public void SkillCollected(Ability ability)
         {
-            ability.keyCode = skillUIManager.SetupSkill(ability);
-            activeAbilities.Add(ability);
+            onAbilityCollected.Invoke(ability);
+            //activeAbilities.Add(ability);
         }
 
+        KeyCode[] keycodes = new KeyCode[] {KeyCode.Q, KeyCode.R, KeyCode.E, KeyCode.Mouse0, KeyCode.Mouse1};
 
         private void Update()
         {
-            var mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
-            foreach (var ability in activeAbilities)
+            foreach (var keycode in keycodes)
             {
-                if (ability._abilityState == AbilityState.Ready && Input.GetKeyDown(ability.keyCode))
+                if (Input.GetKeyDown(keycode))
                 {
-                    if (!CanCast(ability, mousePos)) return;
-
-                    Debug.Log($"Ability used {ability.skillData.name}");
-                    ability.skillData.CastSkill(gameObject, mousePos);
-                    skillUIManager.SkillUsed(ability);
-                    ability._abilityState = AbilityState.Active;
-                    ability.activeTime = ability.skillData.activeTime;
+                    switch (keycode)
+                    {
+                        case KeyCode.Q:
+                            CastSkill(qAbility);
+                            break;
+                        case KeyCode.R:
+                            CastSkill(rAbility);
+                            break;
+                        case KeyCode.E:
+                            CastSkill(mainAbilities[0]);
+                            break;
+                        case KeyCode.Mouse0:
+                            CastSkill(mainAbilities[1]);
+                            break;
+                        case KeyCode.Mouse1:
+                            CastSkill(mainAbilities[2]);
+                            break;
+                    }
                 }
-
-                UpdateAbilityState(ability);
             }
+        }
+
+        private void CastSkill(Ability ability)
+        {
+            var mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
+
+            if (!CanCast(ability, mousePos)) return;
+
+            Debug.Log($"Ability used {ability.skillData.name}");
+            ability.skillData.CastSkill(gameObject, mousePos);
+            onAbilityUsed.Invoke(ability);
+            ability._abilityState = AbilityState.Active;
+            ability.activeTime = ability.skillData.activeTime;
+            UpdateAbilityState(ability);
         }
 
         private void UpdateAbilityState(Ability ability)
         {
             if (ability._abilityState == AbilityState.Active)
             {
-                if (ability.activeTime > 0) 
+                if (ability.activeTime > 0)
                 {
                     ability.activeTime -= Time.deltaTime;
                 }
@@ -114,6 +140,8 @@ namespace _Scripts
 
         private bool CanCast(Ability ability, Vector3 mousePos)
         {
+            if (ability._abilityState != AbilityState.Ready) return false;
+            
             var maxDistance = ability.skillData.skillRange;
             if (Vector2.Distance(mousePos, transform.position) >= maxDistance)
             {

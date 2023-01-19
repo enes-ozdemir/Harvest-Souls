@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 2441812}
   - component: {fileID: 2441813}
   m_Layer: 0
-  m_Name: HealthUIManager
+  m_Name: TopUIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthText: {fileID: 2011115327}
-  soulText: {fileID: 0}
+  soulText: {fileID: 1274869274}
 --- !u!1 &3609015
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9174ba90ef64231a11b5d59ca67b846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: 
   skillImage: {fileID: 124431197}
   cooldownImage: {fileID: 1753822944}
   text: {fileID: 1108822800}
@@ -937,11 +938,26 @@ MonoBehaviour:
   mainSkill: {fileID: 1341168161}
   leftClickSkill: {fileID: 1894984608}
   rightClickSkill: {fileID: 395064455}
-  mainSkillAbility: {fileID: 11400000, guid: 4c29673f75d001343a72d46346837b85, type: 2}
-  leftClickAbility: {fileID: 0}
-  rightClickAbility: {fileID: 11400000, guid: 9b734afc5c1b88749b61edd5e3a3e816, type: 2}
   firstCollectedSkill: {fileID: 97609547}
   secondCollectedSkill: {fileID: 1137644202}
+  mainSkillAbility:
+    keyCode: 0
+    skillData: {fileID: 0}
+    cooldownTime: 0
+    activeTime: 0
+    _abilityState: 0
+  leftClickAbility:
+    keyCode: 0
+    skillData: {fileID: 0}
+    cooldownTime: 0
+    activeTime: 0
+    _abilityState: 0
+  rightClickAbility:
+    keyCode: 0
+    skillData: {fileID: 0}
+    cooldownTime: 0
+    activeTime: 0
+    _abilityState: 0
 --- !u!1 &383093021
 GameObject:
   m_ObjectHideFlags: 3
@@ -1123,6 +1139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9174ba90ef64231a11b5d59ca67b846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: 
   skillImage: {fileID: 1403577330}
   cooldownImage: {fileID: 666399489}
   text: {fileID: 111582005}
@@ -1159,6 +1176,7 @@ Transform:
   - {fileID: 574294369}
   - {fileID: 657129481}
   - {fileID: 531158911}
+  - {fileID: 2024283172}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1296,11 +1314,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 11
   m_TargetDisplay: 0
---- !u!1 &494446165 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3133537354971823125, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
-  m_PrefabInstance: {fileID: 8688675058001921227}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2863,6 +2876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9174ba90ef64231a11b5d59ca67b846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: 
   skillImage: {fileID: 1723540181}
   cooldownImage: {fileID: 790053172}
   text: {fileID: 1526724051}
@@ -3488,6 +3502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9174ba90ef64231a11b5d59ca67b846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: 
   skillImage: {fileID: 1532188134}
   cooldownImage: {fileID: 351951092}
   text: {fileID: 2118799911}
@@ -5052,6 +5067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9174ba90ef64231a11b5d59ca67b846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: 
   skillImage: {fileID: 793601469}
   cooldownImage: {fileID: 1828335297}
   text: {fileID: 1461398696}
@@ -5470,6 +5486,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011115325}
   m_CullTransparentMesh: 1
+--- !u!1 &2024283171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2024283172}
+  - component: {fileID: 2024283173}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2024283172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024283171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 416426141}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2024283173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024283171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdcac6d5e6e41ea830399a2fdbd1f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Projectile
+    gameObject: {fileID: 2568245161747091663, guid: 04105608e09470e478030ba45c49a9f8, type: 3}
+    size: 400
+  - tag: EnemyProjectile
+    gameObject: {fileID: 2568245161747091663, guid: 3a0ead043237bca489b753072fc988d9, type: 3}
+    size: 400
+  - tag: ProjectileExplosive
+    gameObject: {fileID: 160696, guid: fac9ad46c0307484fba6960de846139d, type: 3}
+    size: 400
+  - tag: Soul
+    gameObject: {fileID: 2568245161747091663, guid: dbd90b48876ab8b4989582ca3f8ccafa, type: 3}
+    size: 400
 --- !u!1 &2105734797
 GameObject:
   m_ObjectHideFlags: 0
@@ -5825,65 +5898,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &7007647950587075424
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 2
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5882955997051918591, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
-      propertyPath: m_Name
-      value: Face 01
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779899582339755285, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779899582339755285, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -20.494162
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779899582339755285, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.158517
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779899582339755285, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779899582339755285, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779899582339755285, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779899582339755285, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779899582339755285, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779899582339755285, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779899582339755285, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779899582339755285, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_AddedGameObjects: []
-  m_SourcePrefab: {fileID: 100100000, guid: 386a267b9b5bf234aa5bf012aa172805, type: 3}
 --- !u!1001 &8688675058001921227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5900,10 +5914,6 @@ PrefabInstance:
       propertyPath: damagedEffect
       value: 
       objectReference: {fileID: 1404985952}
-    - target: {fileID: 2097381582, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
-      propertyPath: skillField
-      value: 
-      objectReference: {fileID: 494446165}
     - target: {fileID: 2097381582, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
       propertyPath: battleManager
       value: 
@@ -5956,36 +5966,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8688675058001921229, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
+      propertyPath: skillUIManager
+      value: 
+      objectReference: {fileID: 358166824}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
---- !u!1 &8688675058001921228 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8688675057717009695, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
-  m_PrefabInstance: {fileID: 8688675058001921227}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8688675058001921229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8688675058001921228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d7b89ef40244d8394f62dc80346f885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillField: {fileID: 494446165}
-  skillUIManager: {fileID: 358166824}
-  activeAbilities:
-  - keyCode: 324
-    skillData: {fileID: 11400000, guid: 9b734afc5c1b88749b61edd5e3a3e816, type: 2}
-    cooldownTime: 1
-    activeTime: 0
-    _abilityState: 0
-  - keyCode: 101
-    skillData: {fileID: 11400000, guid: 4c29673f75d001343a72d46346837b85, type: 2}
-    cooldownTime: 1
-    activeTime: 0
-    _abilityState: 0

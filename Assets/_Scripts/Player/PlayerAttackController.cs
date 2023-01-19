@@ -1,4 +1,5 @@
 ﻿using _Scripts.Player;
+using _Scripts.Util;
 using UnityEngine;
 
 namespace _Scripts
@@ -7,7 +8,7 @@ namespace _Scripts
     {
         [SerializeField] private PlayerAimController playerAimWeapon;
         [SerializeField] private Transform projectile;
-        private Transform _projectileTransform;
+        private GameObject _projectileTransform;
         [SerializeField] private PlayerController playerController;
 
         public void Start()
@@ -20,7 +21,8 @@ namespace _Scripts
         private void SpawnParticle(PlayerAimController.OnShootEventArgs args)
         {
             print("Spawned");
-            _projectileTransform = Instantiate(projectile, args.gunEndPointPosition, Quaternion.identity);
+            _projectileTransform =ObjectPooler.Instance.SpawnFromPool("Projectile", args.gunEndPointPosition,
+                Quaternion.identity);
             var shootDir = (args.shootPosition - args.gunEndPointPosition).normalized;
             _projectileTransform.GetComponent<Projectile>().Setup(shootDir, playerController.GetDamage());
         }

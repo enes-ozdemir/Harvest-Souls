@@ -9,9 +9,11 @@ namespace _Scripts.UI
     [Serializable]
     public class UISkill : MonoBehaviour
     {
+        public string skillName;
         public Image skillImage;
         public Image cooldownImage;
         public TextMeshProUGUI text;
+        public KeyCode keyCode;
 
         public void ToggleCooldown() => cooldownImage.gameObject.SetActive(!cooldownImage.gameObject.activeInHierarchy);
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using _Scripts.Util;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -31,7 +32,8 @@ namespace _Scripts
         private void EndEffect()
         {
             if (isDestroyed) return;
-            Instantiate(explosivePrefab, transform.position, Quaternion.identity);
+            ObjectPooler.Instance.SpawnFromPool("ProjectileExplosive", transform.position,
+                Quaternion.identity);
             Destroy(gameObject);
             explosivePrefab.gameObject.SetActive(false);
             isDestroyed = true;

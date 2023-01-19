@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -11,9 +12,6 @@ namespace _Scripts.UI
         [SerializeField] private UISkill mainSkill;
         [SerializeField] private UISkill leftClickSkill;
         [SerializeField] private UISkill rightClickSkill;
-        [SerializeField]private SkillData mainSkillAbility;
-        [SerializeField]private SkillData leftClickAbility;
-        [SerializeField]private SkillData rightClickAbility;
 
         #endregion
 
@@ -21,36 +19,51 @@ namespace _Scripts.UI
         [SerializeField] private UISkill secondCollectedSkill;
         private Ability _firstSkill;
         private Ability _secondSkill;
+        [SerializeField] private Ability mainSkillAbility;
+        [SerializeField] private Ability leftClickAbility;
+        [SerializeField] private Ability rightClickAbility;
+
+        private List<Ability> usableAbilitiesList;
+        [SerializeField] private List<Ability> mainAbilitiesList;
 
         private bool _isIndexChanged;
+        [SerializeField] private AbilityController _abilityController;
 
-        public Action<Ability> OnAbilityUsed;
 
-        public KeyCode SetupSkill(Ability ability)
+        private void Awake()
+        {
+            _abilityController.onAbilityUsed += SkillUsed;
+            _abilityController.onAbilityCollected += SetupSkill;
+            usableAbilitiesList.Add(mainSkillAbility);
+            usableAbilitiesList.Add(leftClickAbility);
+            usableAbilitiesList.Add(rightClickAbility);
+            usableAbilitiesList.Add(_firstSkill);
+            usableAbilitiesList.Add(_secondSkill);
+        }
+
+        private void SetupSkill(Ability ability)
         {
             UISkill collectedSkill;
             if (!_isIndexChanged)
             {
                 collectedSkill = firstCollectedSkill;
                 _firstSkill = ability;
+                collectedSkill.keyCode = KeyCode.Q;
             }
             else
             {
                 collectedSkill = secondCollectedSkill;
                 _secondSkill = ability;
+                collectedSkill.keyCode = KeyCode.R;
             }
 
-            collectedSkill.skillImage.gameObject.SetActive(true);
+            collectedSkill.gameObject.SetActive(true);
             collectedSkill.skillImage = ability.skillData.skillImage;
             _isIndexChanged = !_isIndexChanged;
-
-            return _isIndexChanged ? KeyCode.Q : KeyCode.R;
         }
 
-        public void SkillUsed(Ability ability)
+        private void SkillUsed(Ability ability)
         {
-            OnAbilityUsed.Invoke(ability);
-
             UISkill usedSkill = null;
             if (_firstSkill == ability)
             {
@@ -62,15 +75,15 @@ namespace _Scripts.UI
                 usedSkill = secondCollectedSkill;
                 _secondSkill = null;
             }
-            else if (mainSkillAbility == ability.skillData)
+            else if (mainSkillAbility == ability)
             {
                 usedSkill = mainSkill;
             }
-            else if (leftClickAbility == ability.skillData)
+            else if (leftClickAbility == ability)
             {
                 usedSkill = leftClickSkill;
             }
-            else if (rightClickAbility == ability.skillData)
+            else if (rightClickAbility == ability)
             {
                 usedSkill = rightClickSkill;
             }
@@ -86,6 +99,7 @@ namespace _Scripts.UI
 
         private async void SetCooldown(UISkill uiSkillComponent, float cooldown)
         {
+            Debug.Log("Cooldown set");
             uiSkillComponent.ToggleCooldown();
             uiSkillComponent.skillImage.fillAmount = 1;
             float time = 0;
@@ -93,7 +107,7 @@ namespace _Scripts.UI
             {
                 var amount = Mathf.Lerp(1, 0, time / cooldown);
                 await UniTask.Delay(1000);
-                uiSkillComponent.SetCooldown(cooldown,amount);
+                uiSkillComponent.SetCooldown(cooldown, amount);
                 time += 1;
             }
         }

@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 2097381573}
   - component: {fileID: 2097381581}
   - component: {fileID: 2097381582}
+  - component: {fileID: 8688675058001921229}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -242,7 +243,7 @@ Transform:
   - {fileID: 8688675058882229463}
   - {fileID: 2534669689241969876}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8688675057717009693
 SpriteRenderer:
@@ -448,7 +449,31 @@ MonoBehaviour:
   healthManager: {fileID: 2097381581}
   battleManager: {fileID: 0}
   _playerInfoData: {fileID: 11400000, guid: 48b4994a1f9f5dc4abc132c47897598c, type: 2}
-  skillField: {fileID: 0}
+--- !u!114 &8688675058001921229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8688675057717009695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d7b89ef40244d8394f62dc80346f885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillField: {fileID: 3133537354971823125}
+  skillUIManager: {fileID: 0}
+  activeAbilities:
+  - keyCode: 324
+    skillData: {fileID: 11400000, guid: 9b734afc5c1b88749b61edd5e3a3e816, type: 2}
+    cooldownTime: 1
+    activeTime: 0
+    _abilityState: 0
+  - keyCode: 101
+    skillData: {fileID: 11400000, guid: 4c29673f75d001343a72d46346837b85, type: 2}
+    cooldownTime: 1
+    activeTime: 0
+    _abilityState: 0
 --- !u!1 &8688675058882229456
 GameObject:
   m_ObjectHideFlags: 0

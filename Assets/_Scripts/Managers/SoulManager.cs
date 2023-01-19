@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Scripts.Data;
+using _Scripts.Util;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -27,7 +28,8 @@ namespace _Scripts.Managers
 
         public void DropSoul(int amount, Vector2 position)
         {
-            var soulObject = Instantiate(soulPrefab, position, quaternion.identity);
+            var soulObject = ObjectPooler.Instance
+                .SpawnFromPool("Soul", position, quaternion.identity);
             var collectable = soulObject.GetComponent<Soul>();
             collectable.Setup(amount);
             _collectableList.Add(collectable);

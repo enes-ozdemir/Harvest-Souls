@@ -23,4 +23,5 @@ namespace _Scripts
         public virtual void CastSkill(GameObject player, Vector3 mousePos) {}
         public virtual void AddSkillEffect(GameObject player) {}
     }
+   
 }
