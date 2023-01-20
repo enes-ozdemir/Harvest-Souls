@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Harvest
   m_EditorClassIdentifier: 
   name: Harvest
-  skillImage: {fileID: 0}
+  skillImage: {fileID: 21300000, guid: f8cba7899c6f35c4982778ca8392bf8f, type: 3}
   effectArea: 20
   skillSpeed: 1
   skillDamage: 0
@@ -21,7 +21,7 @@ MonoBehaviour:
   skillRange: 20
   skillPrefab: {fileID: 0}
   explosivePrefab: {fileID: 0}
-  skillSprite: {fileID: 0}
+  skillSprite: {fileID: 21300000, guid: f8cba7899c6f35c4982778ca8392bf8f, type: 3}
   isOnMouse: 0
   cooldownTime: 5
   activeTime: 0

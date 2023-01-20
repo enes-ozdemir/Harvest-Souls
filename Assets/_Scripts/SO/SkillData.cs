@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
-namespace _Scripts
+namespace _Scripts.SO
 {
     [CreateAssetMenu]
     public class SkillData : ScriptableObject
     {
         public string name;
-        public Image skillImage;
+        public Sprite skillImage;
         public float effectArea;
         public float skillSpeed;
         public float skillDamage;

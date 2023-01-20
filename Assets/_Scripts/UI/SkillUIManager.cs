@@ -1,5 +1,6 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
+using _Scripts.SO;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -9,107 +10,103 @@ namespace _Scripts.UI
     {
         #region MainAbilities
 
-        [SerializeField] private UISkill mainSkill;
-        [SerializeField] private UISkill leftClickSkill;
-        [SerializeField] private UISkill rightClickSkill;
+        [SerializeField] private List<UISkill> mainUISkillList;
+        private List<Ability> _mainAbilitiesList;
 
         #endregion
 
-        [Space] [SerializeField] private UISkill firstCollectedSkill;
-        [SerializeField] private UISkill secondCollectedSkill;
-        private Ability _firstSkill;
-        private Ability _secondSkill;
-        [SerializeField] private Ability mainSkillAbility;
-        [SerializeField] private Ability leftClickAbility;
-        [SerializeField] private Ability rightClickAbility;
-
-        private List<Ability> usableAbilitiesList;
-        [SerializeField] private List<Ability> mainAbilitiesList;
-
-        private bool _isIndexChanged;
-        [SerializeField] private AbilityController _abilityController;
+        [Space] [SerializeField] private List<UISkill> uiSkillList;
+        [SerializeField] private List<Ability> avaliableAbilitiesList;
+        [SerializeField] private AbilityController abilityController;
+        private int _maxAbilities = 2;
+        private KeyCode[] _keycodes = new KeyCode[] {KeyCode.Q, KeyCode.R};
 
 
         private void Awake()
         {
-            _abilityController.onAbilityUsed += SkillUsed;
-            _abilityController.onAbilityCollected += SetupSkill;
-            usableAbilitiesList.Add(mainSkillAbility);
-            usableAbilitiesList.Add(leftClickAbility);
-            usableAbilitiesList.Add(rightClickAbility);
-            usableAbilitiesList.Add(_firstSkill);
-            usableAbilitiesList.Add(_secondSkill);
+            _mainAbilitiesList = abilityController.mainAbilities;
+            abilityController.onAbilityUsed += SkillUsed;
+            abilityController.onAbilityCollected += SetupSkill;
         }
 
         private void SetupSkill(Ability ability)
         {
-            UISkill collectedSkill;
-            if (!_isIndexChanged)
+            if (avaliableAbilitiesList.Count == _maxAbilities)
             {
-                collectedSkill = firstCollectedSkill;
-                _firstSkill = ability;
-                collectedSkill.keyCode = KeyCode.Q;
-            }
-            else
-            {
-                collectedSkill = secondCollectedSkill;
-                _secondSkill = ability;
-                collectedSkill.keyCode = KeyCode.R;
+                avaliableAbilitiesList.RemoveAt(0);
             }
 
-            collectedSkill.gameObject.SetActive(true);
-            collectedSkill.skillImage = ability.skillData.skillImage;
-            _isIndexChanged = !_isIndexChanged;
+            avaliableAbilitiesList.Add(ability);
+           
+            SetUI();
+        }
+
+        private void SetUI()
+        {
+            for (var index = 0; index < avaliableAbilitiesList.Count; index++)
+            {
+                var ability = avaliableAbilitiesList[index];
+                uiSkillList[index].Setup(ability.skillData.skillImage, _keycodes[index]);
+            }
         }
 
         private void SkillUsed(Ability ability)
         {
+            if (IsCollectableSkillUsed(ability)) return;
+
+            CheckForMainAbilityUsage(ability);
+        }
+
+        private void CheckForMainAbilityUsage(Ability ability)
+        {
             UISkill usedSkill = null;
-            if (_firstSkill == ability)
+            for (var index = 0; index < _mainAbilitiesList.Count; index++)
             {
-                usedSkill = firstCollectedSkill;
-                _firstSkill = null;
-            }
-            else if (_secondSkill == ability)
-            {
-                usedSkill = secondCollectedSkill;
-                _secondSkill = null;
-            }
-            else if (mainSkillAbility == ability)
-            {
-                usedSkill = mainSkill;
-            }
-            else if (leftClickAbility == ability)
-            {
-                usedSkill = leftClickSkill;
-            }
-            else if (rightClickAbility == ability)
-            {
-                usedSkill = rightClickSkill;
+                var mainAbility = _mainAbilitiesList[index];
+                if (mainAbility == ability)
+                {
+                    usedSkill = mainUISkillList[index];
+                }
             }
 
             if (usedSkill != null)
             {
                 usedSkill.skillImage.gameObject.SetActive(true);
-                usedSkill.skillImage = ability.skillData.skillImage;
+                usedSkill.skillImage.sprite = ability.skillData.skillImage;
 
-                SetCooldown(usedSkill, ability.cooldownTime);
+                SetCooldown(usedSkill, ability);
             }
         }
 
-        private async void SetCooldown(UISkill uiSkillComponent, float cooldown)
+        private bool IsCollectableSkillUsed(Ability ability)
         {
-            Debug.Log("Cooldown set");
+            foreach (var avAbility in avaliableAbilitiesList.Where(avAbility => ability == avAbility))
+            {
+                avaliableAbilitiesList.Remove(avAbility);
+                SetUI();
+                return true;
+            }
+
+            return false;
+        }
+
+        private async void SetCooldown(UISkill uiSkillComponent, Ability ability)
+        {
+            var cooldown = ability.cooldownTime;
             uiSkillComponent.ToggleCooldown();
             uiSkillComponent.skillImage.fillAmount = 1;
             float time = 0;
-            while (time < cooldown)
+            while (time <= cooldown)
             {
+                ability.abilityState = AbilityState.Cooldown;
                 var amount = Mathf.Lerp(1, 0, time / cooldown);
-                await UniTask.Delay(1000);
-                uiSkillComponent.SetCooldown(cooldown, amount);
+                uiSkillComponent.SetCooldown(cooldown - time, amount);
                 time += 1;
+                await UniTask.Delay(1000);
             }
+
+            ability.abilityState = AbilityState.Ready;
+            ;
         }
     }
 }

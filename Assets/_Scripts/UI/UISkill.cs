@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,13 +15,40 @@ namespace _Scripts.UI
         public TextMeshProUGUI text;
         public KeyCode keyCode;
 
+        public void Setup(Sprite sprite, KeyCode keyCode)
+        {
+            print("Setup UISkill");
+            skillImage.sprite = sprite;
+            this.keyCode = keyCode;
+        }
+
         public void ToggleCooldown() => cooldownImage.gameObject.SetActive(!cooldownImage.gameObject.activeInHierarchy);
 
-        public void SetCooldown(float amount, float fillAmount)
+        public void SetCooldown(float amount, float targetFillAmount)
         {
-            Debug.Log("Set cooldown" + fillAmount);
             text.text = amount.ToString();
-            skillImage.fillAmount = fillAmount;
+            text.gameObject.SetActive(true);
+            cooldownImage.fillAmount = 1;
+            StartCoroutine(LerpFillAmount(cooldownImage, cooldownImage.fillAmount, targetFillAmount, 0.5f));
+        }
+
+        private IEnumerator LerpFillAmount(Image image, float start, float end, float duration)
+        {
+            float time = 0;
+            while (time <= duration)
+            {
+                float fillAmount = Mathf.Lerp(start, end, time / duration);
+                image.fillAmount = fillAmount;
+                yield return null;
+                time += Time.deltaTime;
+            }
+
+            image.fillAmount = end;
+            if (duration <= 0.1f)
+            {
+                text.gameObject.SetActive(false);
+                ToggleCooldown();
+            }
         }
 
         public void SetImage(Image image) => skillImage = image;

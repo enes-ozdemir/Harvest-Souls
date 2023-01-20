@@ -147,6 +147,7 @@ namespace _Scripts
         {
             _isDead = true;
             soulManager.DropSoul(enemyData.soulAmount, transform.position);
+            DropManager.Instance.DropSkill(transform.position);
             characterAnimationController.PlayAnimation(AnimationType.Death);
         }
 

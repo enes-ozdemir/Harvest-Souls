@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Scripts.Behaviour;
+using _Scripts.Skill;
+using _Scripts.SO;
 using _Scripts.UI;
 using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -13,7 +17,15 @@ namespace _Scripts
         public SkillData skillData;
         public float cooldownTime;
         public float activeTime;
-        public AbilityState _abilityState = AbilityState.Ready;
+        [FormerlySerializedAs("_abilityState")] public AbilityState abilityState = AbilityState.Ready;
+ 
+        public Ability(SkillData skillData,float cooldownTime,float activeTime,AbilityState abilityState)
+        {
+            this.skillData = skillData;
+            this.cooldownTime = cooldownTime;
+            this.activeTime = activeTime;
+            this.abilityState = abilityState;
+        }
     }
 
     public enum AbilityState
@@ -26,25 +38,21 @@ namespace _Scripts
 
     public class AbilityController : MonoBehaviour
     {
-        private Vector3 _shootDir;
         [SerializeField] private GameObject skillField;
-        [SerializeField] private List<Ability> mainAbilities;
-        [SerializeField] private Ability qAbility;
-        [SerializeField] private Ability rAbility;
+        [SerializeField] public List<Ability> mainAbilities;
+        private Ability _qAbility;
+       private Ability _rAbility;
 
         private Camera _camera;
+        private Vector3 _shootDir;
+        private KeyCode[] _keycodes = new KeyCode[] {KeyCode.Q, KeyCode.R, KeyCode.E, KeyCode.Mouse0, KeyCode.Mouse1};
 
         public Action<Ability> onAbilityUsed;
         public Action<Ability> onAbilityCollected;
 
-
         private void Awake()
         {
             _camera = Camera.main;
-            // foreach (var ability in abilitiesList)
-            // {
-            //     activeAbilities.Add(ability);
-            // }
         }
 
         private void SetActiveAbilities(Ability ability)
@@ -60,27 +68,58 @@ namespace _Scripts
             skillField.SetActive(false);
         }
 
-        public void SkillCollected(Ability ability)
+        public void SkillCollected(SkillData skillData)
         {
+            var ability = new Ability(skillData, 0, 0, AbilityState.Ready);
             onAbilityCollected.Invoke(ability);
-            //activeAbilities.Add(ability);
+            SetNewSkill(ability);
         }
 
-        KeyCode[] keycodes = new KeyCode[] {KeyCode.Q, KeyCode.R, KeyCode.E, KeyCode.Mouse0, KeyCode.Mouse1};
+        private void SetNewSkill(Ability ability)
+        {
+            if (_qAbility == null)
+            {
+                _qAbility = ability;
+            }
+            else if (_rAbility == null)
+            {
+                _rAbility = ability;
+            }
+            else
+            {
+                _qAbility = ability;
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Skill"))
+            {
+                print("Skill collected");
+                var skillDrop = collision.GetComponent<SkillDrop>();
+                var skill = skillDrop.GetSkill();
+                SkillCollected(skill);
+                Destroy(skillDrop.gameObject);
+            }
+        }
+
 
         private void Update()
         {
-            foreach (var keycode in keycodes)
+            foreach (var keycode in _keycodes)
             {
                 if (Input.GetKeyDown(keycode))
                 {
                     switch (keycode)
                     {
                         case KeyCode.Q:
-                            CastSkill(qAbility);
+                            CastSkill(_qAbility);
+                            _qAbility = null;
                             break;
                         case KeyCode.R:
-                            CastSkill(rAbility);
+                            
+                            CastSkill(_rAbility);
+                            _rAbility = null;
                             break;
                         case KeyCode.E:
                             CastSkill(mainAbilities[0]);
@@ -89,7 +128,7 @@ namespace _Scripts
                             CastSkill(mainAbilities[1]);
                             break;
                         case KeyCode.Mouse1:
-                            CastSkill(mainAbilities[2]);
+                            CastSkill(mainAbilities[1]);
                             break;
                     }
                 }
@@ -105,14 +144,14 @@ namespace _Scripts
             Debug.Log($"Ability used {ability.skillData.name}");
             ability.skillData.CastSkill(gameObject, mousePos);
             onAbilityUsed.Invoke(ability);
-            ability._abilityState = AbilityState.Active;
+            ability.abilityState = AbilityState.Active;
             ability.activeTime = ability.skillData.activeTime;
             UpdateAbilityState(ability);
         }
 
         private void UpdateAbilityState(Ability ability)
         {
-            if (ability._abilityState == AbilityState.Active)
+            if (ability.abilityState == AbilityState.Active)
             {
                 if (ability.activeTime > 0)
                 {
@@ -120,11 +159,11 @@ namespace _Scripts
                 }
                 else
                 {
-                    ability._abilityState = AbilityState.Cooldown;
+                    ability.abilityState = AbilityState.Cooldown;
                     ability.cooldownTime = ability.skillData.cooldownTime;
                 }
             }
-            else if (ability._abilityState == AbilityState.Cooldown)
+            else if (ability.abilityState == AbilityState.Cooldown)
             {
                 if (ability.cooldownTime > 0)
                 {
@@ -132,15 +171,14 @@ namespace _Scripts
                 }
                 else
                 {
-                    ability._abilityState = AbilityState.Ready;
+                    ability.abilityState = AbilityState.Ready;
                 }
             }
         }
 
-
         private bool CanCast(Ability ability, Vector3 mousePos)
         {
-            if (ability._abilityState != AbilityState.Ready) return false;
+            if (ability.abilityState != AbilityState.Ready) return false;
             
             var maxDistance = ability.skillData.skillRange;
             if (Vector2.Distance(mousePos, transform.position) >= maxDistance)

@@ -396,6 +396,7 @@ MonoBehaviour:
   skillImage: {fileID: 124431197}
   cooldownImage: {fileID: 1753822944}
   text: {fileID: 1108822800}
+  keyCode: 0
 --- !u!1 &111582003
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &124431196
 RectTransform:
   m_ObjectHideFlags: 0
@@ -589,7 +590,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: af19b810ad81d8741ba1583f72a9d93c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -935,29 +936,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0301be0bc0989148b49e5fc1bf5f8c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainSkill: {fileID: 1341168161}
-  leftClickSkill: {fileID: 1894984608}
-  rightClickSkill: {fileID: 395064455}
-  firstCollectedSkill: {fileID: 97609547}
-  secondCollectedSkill: {fileID: 1137644202}
-  mainSkillAbility:
-    keyCode: 0
-    skillData: {fileID: 0}
-    cooldownTime: 0
-    activeTime: 0
-    _abilityState: 0
-  leftClickAbility:
-    keyCode: 0
-    skillData: {fileID: 0}
-    cooldownTime: 0
-    activeTime: 0
-    _abilityState: 0
-  rightClickAbility:
-    keyCode: 0
-    skillData: {fileID: 0}
-    cooldownTime: 0
-    activeTime: 0
-    _abilityState: 0
+  mainUISkillList:
+  - {fileID: 1341168161}
+  - {fileID: 1894984608}
+  - {fileID: 395064455}
+  uiSkillList:
+  - {fileID: 97609547}
+  - {fileID: 1137644202}
+  avaliableAbilitiesList: []
+  abilityController: {fileID: 1896126936}
 --- !u!1 &383093021
 GameObject:
   m_ObjectHideFlags: 3
@@ -1046,6 +1033,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &385787533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 385787534}
+  - component: {fileID: 385787535}
+  m_Layer: 0
+  m_Name: DropManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &385787534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385787533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 416426141}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &385787535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385787533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7df642885446b9b9f47a2b4688ede7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillDataList:
+  - {fileID: 11400000, guid: 4c29673f75d001343a72d46346837b85, type: 2}
+  - {fileID: 11400000, guid: 448adfd47507f504da00397655df23bc, type: 2}
+  - {fileID: 11400000, guid: 9b734afc5c1b88749b61edd5e3a3e816, type: 2}
 --- !u!1 &395064451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,6 +1178,7 @@ MonoBehaviour:
   skillImage: {fileID: 1403577330}
   cooldownImage: {fileID: 666399489}
   text: {fileID: 111582005}
+  keyCode: 0
 --- !u!1 &416426140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,6 +1213,7 @@ Transform:
   - {fileID: 657129481}
   - {fileID: 531158911}
   - {fileID: 2024283172}
+  - {fileID: 385787534}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2880,6 +2917,7 @@ MonoBehaviour:
   skillImage: {fileID: 1723540181}
   cooldownImage: {fileID: 790053172}
   text: {fileID: 1526724051}
+  keyCode: 0
 --- !u!114 &1137644203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3506,6 +3544,7 @@ MonoBehaviour:
   skillImage: {fileID: 1532188134}
   cooldownImage: {fileID: 351951092}
   text: {fileID: 2118799911}
+  keyCode: 0
 --- !u!1 &1403577328
 GameObject:
   m_ObjectHideFlags: 0
@@ -4210,7 +4249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: e55f3a6cb393b514092cf50ba1a00ce1, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -4290,7 +4329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1723540180
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4331,7 +4370,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: af19b810ad81d8741ba1583f72a9d93c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5071,11 +5110,23 @@ MonoBehaviour:
   skillImage: {fileID: 793601469}
   cooldownImage: {fileID: 1828335297}
   text: {fileID: 1461398696}
+  keyCode: 0
 --- !u!4 &1896126935 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8688675057717009692, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
   m_PrefabInstance: {fileID: 8688675058001921227}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1896126936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8688675058001921229, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
+  m_PrefabInstance: {fileID: 8688675058001921227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d7b89ef40244d8394f62dc80346f885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1917425491
 GameObject:
   m_ObjectHideFlags: 0
@@ -5543,6 +5594,9 @@ MonoBehaviour:
   - tag: Soul
     gameObject: {fileID: 2568245161747091663, guid: dbd90b48876ab8b4989582ca3f8ccafa, type: 3}
     size: 400
+  - tag: SkillDrop
+    gameObject: {fileID: 1136455854920384128, guid: bed676a8daa9ce94cbd5043523e104b6, type: 3}
+    size: 100
 --- !u!1 &2105734797
 GameObject:
   m_ObjectHideFlags: 0
@@ -5970,6 +6024,22 @@ PrefabInstance:
       propertyPath: skillUIManager
       value: 
       objectReference: {fileID: 358166824}
+    - target: {fileID: 8688675058001921229, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
+      propertyPath: mainAbilities.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688675058001921229, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
+      propertyPath: mainAbilities.Array.data[0].skillData
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b734afc5c1b88749b61edd5e3a3e816, type: 2}
+    - target: {fileID: 8688675058001921229, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
+      propertyPath: mainAbilities.Array.data[1].skillData
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c29673f75d001343a72d46346837b85, type: 2}
+    - target: {fileID: 8688675058001921229, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
+      propertyPath: mainAbilities.Array.data[2].skillData
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b734afc5c1b88749b61edd5e3a3e816, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}

@@ -11,7 +11,7 @@ namespace _Scripts
         public float moveSpeed;
         public int projectileDamage;
         public GameObject explosivePrefab;
-        private bool isDestroyed;
+        private bool _isDestroyed;
 
         public void Setup(Vector3 shootDirection, int damage)
         {
@@ -23,20 +23,20 @@ namespace _Scripts
 
         private async void DestroyProjectile(float seconds)
         {
-            if (isDestroyed) return;
+            if (_isDestroyed) return;
             await UniTask.Delay(TimeSpan.FromSeconds(seconds));
-            if (gameObject == null) return;
             EndEffect();
         }
 
         private void EndEffect()
         {
-            if (isDestroyed) return;
+            if (_isDestroyed) return;
             ObjectPooler.Instance.SpawnFromPool("ProjectileExplosive", transform.position,
                 Quaternion.identity);
+            if (gameObject == null) return;
             Destroy(gameObject);
             explosivePrefab.gameObject.SetActive(false);
-            isDestroyed = true;
+            _isDestroyed = true;
         }
 
         public void DestroyIt()

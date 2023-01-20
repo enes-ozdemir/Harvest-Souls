@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Scripts.Managers;
+using _Scripts.SO;
 using UnityEngine;
 
 namespace _Scripts.Skill
