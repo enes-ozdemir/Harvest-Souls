@@ -3,7 +3,7 @@
 namespace _Scripts.SO
 {
     [CreateAssetMenu]
-    public class SkillData : ScriptableObject
+    public class  SkillData : ScriptableObject
     {
         public string name;
         public Sprite skillImage;

@@ -1,6 +1,7 @@
 ﻿using System;
 using _Scripts.Managers;
 using _Scripts.Player;
+using _Scripts.Skill;
 using _Scripts.SO;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -131,7 +132,7 @@ namespace _Scripts
             }
         }
 
-        private void GotDamaged(int damageAmount)
+        public void GotDamaged(int damageAmount)
         {
             currentHealth -= damageAmount;
             DoDamagedEffect();

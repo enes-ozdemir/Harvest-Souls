@@ -103,7 +103,6 @@ namespace _Scripts
             }
         }
 
-
         private void Update()
         {
             foreach (var keycode in _keycodes)
@@ -117,7 +116,6 @@ namespace _Scripts
                             _qAbility = null;
                             break;
                         case KeyCode.R:
-                            
                             CastSkill(_rAbility);
                             _rAbility = null;
                             break;

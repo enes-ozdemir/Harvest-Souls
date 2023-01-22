@@ -31,6 +31,8 @@ namespace _Scripts.UI
 
         private void SetupSkill(Ability ability)
         {
+            ability.abilityState = AbilityState.Ready;
+
             if (avaliableAbilitiesList.Count == _maxAbilities)
             {
                 avaliableAbilitiesList.RemoveAt(0);

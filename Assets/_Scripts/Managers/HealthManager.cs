@@ -15,7 +15,7 @@ namespace _Scripts
 
         private bool canTakeDamage = true;
 
-        [FormerlySerializedAs("_healthUIManager")] [SerializeField]
+        [SerializeField]
         private TopUIManager topUIManager;
 
         [SerializeField] private Image damagedEffect;
@@ -35,6 +35,11 @@ namespace _Scripts
         private void SetupHealth()
         {
             ResetHealth();
+        }
+
+        public void Heal()
+        {
+            currentHealthCount += 1;
         }
 
         public bool isDamagable()
