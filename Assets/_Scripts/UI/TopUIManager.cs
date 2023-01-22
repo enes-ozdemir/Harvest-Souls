@@ -1,18 +1,22 @@
+using System;
 using _Scripts.Data;
-using _Scripts.Player;
+using _Scripts.Managers;
 using TMPro;
 using UnityEngine;
 
-namespace _Scripts.Managers
+namespace _Scripts.UI
 {
     public class TopUIManager : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI healthText;
         [SerializeField] private TextMeshProUGUI soulText;
 
+        public Action<int> onHealthChanged;
+
         private void Start()
         {
             SoulManager.Instance.OnSoulCollected += SetupSoulUI;
+            onHealthChanged += SetupHealthUI;
         }
 
         public void SetupHealthUI(int health)

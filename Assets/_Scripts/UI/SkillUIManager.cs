@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.Controllers;
 using _Scripts.SO;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -39,12 +40,14 @@ namespace _Scripts.UI
             }
 
             avaliableAbilitiesList.Add(ability);
-           
+
             SetUI();
         }
 
         private void SetUI()
         {
+            foreach (var uiSkill in uiSkillList) uiSkill.Remove();
+
             for (var index = 0; index < avaliableAbilitiesList.Count; index++)
             {
                 var ability = avaliableAbilitiesList[index];
@@ -95,7 +98,7 @@ namespace _Scripts.UI
         private async void SetCooldown(UISkill uiSkillComponent, Ability ability)
         {
             var cooldown = ability.cooldownTime;
-            uiSkillComponent.ToggleCooldown();
+            uiSkillComponent.cooldownImage.gameObject.SetActive(false);
             uiSkillComponent.skillImage.fillAmount = 1;
             float time = 0;
             while (time <= cooldown)
@@ -108,7 +111,6 @@ namespace _Scripts.UI
             }
 
             ability.abilityState = AbilityState.Ready;
-            ;
         }
     }
 }

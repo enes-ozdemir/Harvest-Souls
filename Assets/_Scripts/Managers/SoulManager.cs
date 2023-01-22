@@ -22,7 +22,6 @@ namespace _Scripts.Managers
         
         [SerializeField] private GameObject soulPrefab;
         public List<ICollectable> _collectableList = new();
-        [SerializeField] private BattleManager _battleManager;
 
         public Action<int> OnSoulCollected;
 
@@ -39,7 +38,6 @@ namespace _Scripts.Managers
         {
             print("Soul added " + 1);
             PlayerStats.soulAmount += 1;
-
             //  PlayerPrefs.SetInt("soulAmount",amount);
         }
     }

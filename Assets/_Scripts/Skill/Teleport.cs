@@ -12,7 +12,7 @@ namespace _Scripts.Skill
 
             var teleportPrefab = Instantiate(skillPrefab, player.transform.position, Quaternion.identity);
             var secondTeleportPrefab = Instantiate(skillPrefab, mousePos, Quaternion.identity);
-            player.transform.position = mousePos;
+            player.transform.position = new Vector3(mousePos.x,0,mousePos.y);
             Destroy(teleportPrefab,1f);
             Destroy(secondTeleportPrefab,1.2f);
         }

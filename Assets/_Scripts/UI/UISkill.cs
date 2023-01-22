@@ -17,24 +17,32 @@ namespace _Scripts.UI
 
         public void Setup(Sprite sprite, KeyCode keyCode)
         {
-            print("Setup UISkill");
+            text.gameObject.SetActive(false);
+            skillImage.gameObject.SetActive(true);
+            cooldownImage.fillAmount = 0;
             skillImage.sprite = sprite;
             this.keyCode = keyCode;
         }
-
-        public void ToggleCooldown() => cooldownImage.gameObject.SetActive(!cooldownImage.gameObject.activeInHierarchy);
+        public void Remove()
+        {
+            skillImage.gameObject.SetActive(false);
+            cooldownImage.gameObject.SetActive(false);
+            text.gameObject.SetActive(false);
+        }
 
         public void SetCooldown(float amount, float targetFillAmount)
         {
             text.text = amount.ToString();
-            text.gameObject.SetActive(true);
+            cooldownImage.gameObject.SetActive(true);
             cooldownImage.fillAmount = 1;
+            text.gameObject.SetActive(true);
             StartCoroutine(LerpFillAmount(cooldownImage, cooldownImage.fillAmount, targetFillAmount, 0.5f));
         }
 
         private IEnumerator LerpFillAmount(Image image, float start, float end, float duration)
         {
             float time = 0;
+
             while (time <= duration)
             {
                 float fillAmount = Mathf.Lerp(start, end, time / duration);
@@ -43,12 +51,13 @@ namespace _Scripts.UI
                 time += Time.deltaTime;
             }
 
-            image.fillAmount = end;
-            if (duration <= 0.1f)
+            if (time >= duration)
             {
                 text.gameObject.SetActive(false);
-                ToggleCooldown();
+                cooldownImage.gameObject.SetActive(false);
             }
+
+            image.fillAmount = end;
         }
 
         public void SetImage(Image image) => skillImage = image;

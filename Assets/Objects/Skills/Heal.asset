@@ -13,15 +13,14 @@ MonoBehaviour:
   m_Name: Heal
   m_EditorClassIdentifier: 
   name: Heal
-  skillImage: {fileID: 21300000, guid: a46ab3e7041db4a429528a8ff55cfe87, type: 3}
+  skillImage: {fileID: 21300000, guid: 71815a22eac993140bb5ed426f35e2cf, type: 3}
   effectArea: 0
   skillSpeed: 0
   skillDamage: 0
   skillCount: 0
-  skillRange: 0
+  skillRange: -1
   skillPrefab: {fileID: 105942, guid: ff672eaca96d32c419d7a1f1b0346e8d, type: 3}
   explosivePrefab: {fileID: 0}
-  skillSprite: {fileID: 21300000, guid: a46ab3e7041db4a429528a8ff55cfe87, type: 3}
+  skillSprite: {fileID: 21300000, guid: 71815a22eac993140bb5ed426f35e2cf, type: 3}
   isOnMouse: 0
   cooldownTime: 0
-  activeTime: 0

@@ -178,7 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3609016}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 97609546}
   - component: {fileID: 97609545}
   - component: {fileID: 97609547}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: QSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,15 +355,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.009433985, g: 0.0080544865, b: 0.0080544865, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ba68fa8bf3994644b5d96d137d32974, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b631b747eaea1bb40a188fdced546dd2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -395,8 +395,8 @@ MonoBehaviour:
   skillName: 
   skillImage: {fileID: 124431197}
   cooldownImage: {fileID: 1753822944}
-  text: {fileID: 1108822800}
-  keyCode: 0
+  text: {fileID: 2105734799}
+  keyCode: 113
 --- !u!1 &111582003
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 111582004}
   - component: {fileID: 111582006}
   - component: {fileID: 111582005}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CooldownText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 124431196}
   - component: {fileID: 124431198}
   - component: {fileID: 124431197}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 351951091}
   - component: {fileID: 351951093}
   - component: {fileID: 351951092}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CooldownImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +896,7 @@ GameObject:
   m_Component:
   - component: {fileID: 358166823}
   - component: {fileID: 358166824}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SkillUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -938,7 +938,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainUISkillList:
   - {fileID: 1341168161}
-  - {fileID: 1894984608}
   - {fileID: 395064455}
   uiSkillList:
   - {fileID: 97609547}
@@ -1079,9 +1078,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillDataList:
   - {fileID: 11400000, guid: 4c29673f75d001343a72d46346837b85, type: 2}
-  - {fileID: 11400000, guid: 448adfd47507f504da00397655df23bc, type: 2}
   - {fileID: 11400000, guid: 9b734afc5c1b88749b61edd5e3a3e816, type: 2}
   - {fileID: 11400000, guid: bf91b3e619242df42be34b47fe59b2b6, type: 2}
+  - {fileID: 11400000, guid: a3fb72bf222b04244b7585c73c271081, type: 2}
 --- !u!1 &395064451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,7 +1093,7 @@ GameObject:
   - component: {fileID: 395064454}
   - component: {fileID: 395064453}
   - component: {fileID: 395064455}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RightSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1138,15 +1137,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.009433985, g: 0.0080544865, b: 0.0080544865, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ba68fa8bf3994644b5d96d137d32974, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b631b747eaea1bb40a188fdced546dd2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1600,7 +1599,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soulPrefab: {fileID: 2568245161747091663, guid: dbd90b48876ab8b4989582ca3f8ccafa, type: 3}
-  _battleManager: {fileID: 800043725}
 --- !u!1 &535899673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,7 +1740,7 @@ GameObject:
   - component: {fileID: 666399488}
   - component: {fileID: 666399490}
   - component: {fileID: 666399489}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CooldownImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1849,7 +1847,7 @@ GameObject:
   - component: {fileID: 692585651}
   - component: {fileID: 692585653}
   - component: {fileID: 692585652}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CooldownText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1984,7 +1982,7 @@ GameObject:
   - component: {fileID: 790053171}
   - component: {fileID: 790053173}
   - component: {fileID: 790053172}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CooldownImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2060,7 +2058,7 @@ GameObject:
   - component: {fileID: 793601468}
   - component: {fileID: 793601470}
   - component: {fileID: 793601469}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2186,7 +2184,7 @@ GameObject:
   - component: {fileID: 858912665}
   - component: {fileID: 858912667}
   - component: {fileID: 858912666}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: KeyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2490,7 +2488,7 @@ GameObject:
   - component: {fileID: 967739213}
   - component: {fileID: 967739215}
   - component: {fileID: 967739214}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2735,7 +2733,7 @@ GameObject:
   - component: {fileID: 1108822799}
   - component: {fileID: 1108822801}
   - component: {fileID: 1108822800}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: KeyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2871,7 +2869,7 @@ GameObject:
   - component: {fileID: 1137644204}
   - component: {fileID: 1137644203}
   - component: {fileID: 1137644202}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2917,8 +2915,8 @@ MonoBehaviour:
   skillName: 
   skillImage: {fileID: 1723540181}
   cooldownImage: {fileID: 790053172}
-  text: {fileID: 1526724051}
-  keyCode: 0
+  text: {fileID: 1917425493}
+  keyCode: 114
 --- !u!114 &1137644203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2932,15 +2930,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.009433985, g: 0.0080544865, b: 0.0080544865, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ba68fa8bf3994644b5d96d137d32974, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b631b747eaea1bb40a188fdced546dd2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2969,7 +2967,7 @@ GameObject:
   - component: {fileID: 1139460972}
   - component: {fileID: 1139460971}
   - component: {fileID: 1139460970}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3059,8 +3057,8 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -362952483
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!1 &1244279589
 GameObject:
@@ -3239,7 +3237,7 @@ GameObject:
   - component: {fileID: 1274869273}
   - component: {fileID: 1274869275}
   - component: {fileID: 1274869274}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3373,7 +3371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1299242386}
   - component: {fileID: 1299242387}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Soul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3460,7 +3458,7 @@ GameObject:
   - component: {fileID: 1341168160}
   - component: {fileID: 1341168159}
   - component: {fileID: 1341168161}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MainSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3504,15 +3502,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.009433985, g: 0.0080544865, b: 0.0080544865, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ba68fa8bf3994644b5d96d137d32974, type: 3}
-  m_Type: 3
+  m_Sprite: {fileID: 21300000, guid: b631b747eaea1bb40a188fdced546dd2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3544,8 +3542,8 @@ MonoBehaviour:
   skillName: 
   skillImage: {fileID: 1532188134}
   cooldownImage: {fileID: 351951092}
-  text: {fileID: 2118799911}
-  keyCode: 0
+  text: {fileID: 692585652}
+  keyCode: 101
 --- !u!1 &1403577328
 GameObject:
   m_ObjectHideFlags: 0
@@ -3557,7 +3555,7 @@ GameObject:
   - component: {fileID: 1403577329}
   - component: {fileID: 1403577331}
   - component: {fileID: 1403577330}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3633,7 +3631,7 @@ GameObject:
   - component: {fileID: 1404985951}
   - component: {fileID: 1404985953}
   - component: {fileID: 1404985952}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3841,7 +3839,7 @@ GameObject:
   - component: {fileID: 1461398695}
   - component: {fileID: 1461398697}
   - component: {fileID: 1461398696}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CooldownText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4076,7 +4074,7 @@ GameObject:
   - component: {fileID: 1526724050}
   - component: {fileID: 1526724052}
   - component: {fileID: 1526724051}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: KeyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4211,7 +4209,7 @@ GameObject:
   - component: {fileID: 1532188133}
   - component: {fileID: 1532188135}
   - component: {fileID: 1532188134}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4285,7 +4283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1603262492}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SoulBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4324,7 +4322,7 @@ GameObject:
   - component: {fileID: 1723540180}
   - component: {fileID: 1723540182}
   - component: {fileID: 1723540181}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4535,7 +4533,7 @@ GameObject:
   - component: {fileID: 1753822943}
   - component: {fileID: 1753822945}
   - component: {fileID: 1753822944}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CooldownImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4640,7 +4638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1772965525}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4814,7 +4812,7 @@ GameObject:
   - component: {fileID: 1828335296}
   - component: {fileID: 1828335298}
   - component: {fileID: 1828335297}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CoolDownImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4890,7 +4888,7 @@ GameObject:
   - component: {fileID: 1863931069}
   - component: {fileID: 1863931071}
   - component: {fileID: 1863931070}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: KeyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5025,8 +5023,7 @@ GameObject:
   - component: {fileID: 1894984605}
   - component: {fileID: 1894984607}
   - component: {fileID: 1894984606}
-  - component: {fileID: 1894984608}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LeftSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5070,15 +5067,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.009433985, g: 0.0080544865, b: 0.0080544865, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ba68fa8bf3994644b5d96d137d32974, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b631b747eaea1bb40a188fdced546dd2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5095,23 +5092,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894984604}
   m_CullTransparentMesh: 1
---- !u!114 &1894984608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894984604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9174ba90ef64231a11b5d59ca67b846, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillName: 
-  skillImage: {fileID: 793601469}
-  cooldownImage: {fileID: 1828335297}
-  text: {fileID: 1461398696}
-  keyCode: 0
 --- !u!4 &1896126935 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8688675057717009692, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
@@ -5139,7 +5119,7 @@ GameObject:
   - component: {fileID: 1917425492}
   - component: {fileID: 1917425494}
   - component: {fileID: 1917425493}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CooldownText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5375,7 +5355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1967279198}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5414,7 +5394,7 @@ GameObject:
   - component: {fileID: 2011115326}
   - component: {fileID: 2011115328}
   - component: {fileID: 2011115327}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5609,7 +5589,7 @@ GameObject:
   - component: {fileID: 2105734798}
   - component: {fileID: 2105734800}
   - component: {fileID: 2105734799}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CooldownText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5744,7 +5724,7 @@ GameObject:
   - component: {fileID: 2118799910}
   - component: {fileID: 2118799912}
   - component: {fileID: 2118799911}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: KeyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5894,7 +5874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1127495562057856752}
   - component: {fileID: 1127495562057856759}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6027,16 +6007,16 @@ PrefabInstance:
       objectReference: {fileID: 358166824}
     - target: {fileID: 8688675058001921229, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
       propertyPath: mainAbilities.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8688675058001921229, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
       propertyPath: mainAbilities.Array.data[0].skillData
       value: 
-      objectReference: {fileID: 11400000, guid: 9b734afc5c1b88749b61edd5e3a3e816, type: 2}
+      objectReference: {fileID: 11400000, guid: 4c29673f75d001343a72d46346837b85, type: 2}
     - target: {fileID: 8688675058001921229, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
       propertyPath: mainAbilities.Array.data[1].skillData
       value: 
-      objectReference: {fileID: 11400000, guid: 4c29673f75d001343a72d46346837b85, type: 2}
+      objectReference: {fileID: 11400000, guid: 9b734afc5c1b88749b61edd5e3a3e816, type: 2}
     - target: {fileID: 8688675058001921229, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
       propertyPath: mainAbilities.Array.data[2].skillData
       value: 

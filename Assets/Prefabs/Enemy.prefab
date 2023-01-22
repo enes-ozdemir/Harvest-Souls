@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4692856867734973683}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_Size: {x: 9, y: 9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4692856867734973695
@@ -104,9 +104,8 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   enemyData: {fileID: 11400000, guid: bdebfc3a62712804181b5103e37c7537, type: 2}
-  soulManager: {fileID: 0}
   target: {fileID: 8688675057717009692, guid: e1095d9fc3ef1f74eb6e98d1dde9c8a4, type: 3}
-  playerController: {fileID: 0}
+  priority: 1
 --- !u!50 &4692856867734973681
 Rigidbody2D:
   serializedVersion: 4

@@ -10,8 +10,6 @@ namespace _Scripts.Skill
     {
         public override void CastSkill(GameObject player,Vector3 mousePos)
         {
-            Debug.Log("Harvest start");
-
             var collectables = GetNearbySouls(player.transform.position);
             HarvestSouls(collectables,player.transform);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using _Scripts.Managers;
+using _Scripts.UI;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -13,14 +14,14 @@ namespace _Scripts
         [SerializeField] public int maxHealthCount = 5;
         private int currentHealthCount;
 
-        private bool canTakeDamage = true;
+        private bool _canTakeDamage = true;
 
         [SerializeField]
         private TopUIManager topUIManager;
 
         [SerializeField] private Image damagedEffect;
 
-        private void Start()
+        private void Awake()
         {
             BattleManager.onBattleStarted += SetupHealth;
             ResetHealth();
@@ -40,31 +41,28 @@ namespace _Scripts
         public void Heal()
         {
             currentHealthCount += 1;
+            topUIManager.onHealthChanged.Invoke(currentHealthCount);
         }
 
         public bool isDamagable()
         {
-            return canTakeDamage;
+            return _canTakeDamage;
         }
 
         public async UniTask SetInvensible(float amount)
         {
-            print("SetInvensible for " + amount);
             await UniTask.Delay(TimeSpan.FromSeconds(amount));
-            canTakeDamage = true;
-            print("Not Invensible anymore " + amount);
+            _canTakeDamage = true;
         }
 
         public void Damaged(int amount)
         {
-            print("Player is damageble = ? " + isDamagable());
             if (!isDamagable()) return;
-            canTakeDamage = false;
+            _canTakeDamage = false;
             DamageEffect();
-            print("Player damaged");
             currentHealthCount -= amount;
             if (currentHealthCount < 0) currentHealthCount = 0;
-            topUIManager.SetupHealthUI(currentHealthCount);
+            topUIManager.onHealthChanged.Invoke(currentHealthCount);
             SetInvensible(2f);
         }
 

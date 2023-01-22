@@ -14,14 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Teleport
   skillImage: {fileID: 21300000, guid: d48eb6a3386070d419877d4cbea6fae4, type: 3}
-  effectArea: 0
-  skillSpeed: 0.5
   skillDamage: 0
   skillCount: 0
   skillRange: 20
   skillPrefab: {fileID: 114038, guid: 0845aa8b2ce753145ab9bacc42062661, type: 3}
   explosivePrefab: {fileID: 0}
   skillSprite: {fileID: 21300000, guid: d48eb6a3386070d419877d4cbea6fae4, type: 3}
-  isOnMouse: 0
+  isOnMouse: 1
   cooldownTime: 2
-  activeTime: 0
